@@ -1,0 +1,32 @@
+a = int(input("Введите первое число: "))
+b = int(input("Введите второе число: "))
+
+# если числа введены в обратном порядке — меняем местами,
+# чтобы диапазон всегда был от меньшего к большему
+start, end = min(a, b), max(a, b)
+
+even = []        # чётные
+odd = []         # нечётные
+multiples_of_9 = []  # кратные 9
+
+for n in range(start, end + 1):
+    if n % 2 == 0:
+        even.append(n)
+    else:
+        odd.append(n)
+    if n % 9 == 0:
+        multiples_of_9.append(n)
+
+def stats(numbers):
+    """Возвращает сумму и среднее арифметическое списка."""
+    if not numbers:
+        return 0, 0  # если группа пустая
+    s = sum(numbers)
+    return s, s / len(numbers)
+
+even_sum, even_avg = stats(even)
+odd_sum, odd_avg = stats(odd)
+m9_sum, m9_avg = stats(multiples_of_9)
+
+print(f"Чётные числа: {even}")
+print(f"  Сумма: {even_sum}, среднее арифметическое: {even_avg}")
